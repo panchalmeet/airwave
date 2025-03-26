@@ -1,6 +1,6 @@
 <?php
 /**
- * User login resolver
+ * User login resolver - for admin
  *
  * PHP version 8.1
  *
