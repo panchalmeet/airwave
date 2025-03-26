@@ -1,0 +1,12 @@
+extend type Query {
+  viewSubCategory(input: viewSubCategoryInput! @spread ): viewSubCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\SubCategoryListResolver@view") 
+}
+
+input viewSubCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\ViewSubCategoryValidator") {
+  uuid : String!
+}
+
+type viewSubCategoryResponse {
+  meta : Meta!
+  data : SubCategory!
+}

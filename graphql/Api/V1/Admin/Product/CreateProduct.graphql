@@ -1,0 +1,28 @@
+extend type Mutation {
+  createProduct(input: CreateProductInput! @spread ): CreateProductResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\ProductResolver") 
+}
+
+input CreateProductInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\CreateProductValidator") {
+  cat_uuid       : String!
+  sub_cat_uuid   : String!
+  name           : String!
+  part_number    : String
+  outer_td       : String
+  outer_bd       : String
+  inner_td       : String
+  inner_bd       : String
+  no_check_valve : String
+  no_pass_valves : String
+  thread         : String
+  height         : String
+  price          : String!
+  main_img       : Upload!
+  sec_img        : Upload
+  thrd_img       : Upload
+  status         : ProductStatusEnum!
+  top_product    : TopProductEditEnum!
+}
+
+type CreateProductResponse {
+  meta: Meta!
+}

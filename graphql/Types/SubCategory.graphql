@@ -1,0 +1,9 @@
+type SubCategory {
+  id: String
+  uuid: String
+  category_uuid: String
+  category_name: String
+  name: String
+  slug: String
+  status: StatusEnum
+}

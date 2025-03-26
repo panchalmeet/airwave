@@ -1,0 +1,23 @@
+extend type Query {
+  listCategory(input: listCategoryInput! @spread ): listCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\CategoryListResolver") 
+}
+
+input listCategoryInput {
+  offset : Int!
+  limit : Int
+  query: String
+  sort_column: String
+  sort_order: String
+}
+
+type listCategoryResponse {
+  meta : Meta!
+  pagination: CategoryPagination
+  data : [Category]!
+}
+
+type CategoryPagination{
+  total_count: Int
+  offset: Int
+  limit: Int
+}

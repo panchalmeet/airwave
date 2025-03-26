@@ -1,0 +1,13 @@
+extend type Query {
+  userViewProduct(input: userViewProductInput! @spread ): userViewProductResponse! @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\User\\UserProductListResolver@view")
+}
+
+input userViewProductInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\User\\ViewProductValidator") {
+  uuid : String!
+}
+
+type userViewProductResponse {
+  meta : Meta!
+  data : Product!
+}
+

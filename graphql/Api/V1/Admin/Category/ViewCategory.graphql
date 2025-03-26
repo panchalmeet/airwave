@@ -1,0 +1,12 @@
+extend type Query {
+  viewCategory(input: viewCategoryInput! @spread ): viewCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\CategoryListResolver@view") 
+}
+
+input viewCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\ViewCategoryValidator") {
+  uuid : String!
+}
+
+type viewCategoryResponse {
+  meta : Meta!
+  data : Category!
+}

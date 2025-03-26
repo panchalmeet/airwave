@@ -1,0 +1,16 @@
+extend type Mutation {
+  editSubCategory(input: EditSubCategoryInput! @spread ): EditSubCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\SubCategoryResolver@edit") 
+}
+
+input EditSubCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\EditSubCategoryValidator") {
+  sub_cat_id     : Int!
+  uuid           : String!
+  category_uuid  : String!
+  sub_cat_name   : String!
+  sub_cat_slug   : String!
+  sub_cat_status : SubCategoryStatusEnum!
+}
+
+type EditSubCategoryResponse {
+  meta: Meta!
+}

@@ -1,0 +1,13 @@
+extend type Query {
+  getProductsData(input: getProductsDataInput! @spread ): userProductsDataResponse! @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\User\\UserProductListResolver@getProductsData")
+}
+
+input getProductsDataInput {
+  product_uuid: [String]!
+}
+
+type userProductsDataResponse {
+  meta  : Meta!
+  data : [Product]!
+}
+

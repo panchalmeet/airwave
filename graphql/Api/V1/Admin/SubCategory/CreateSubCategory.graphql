@@ -1,0 +1,14 @@
+extend type Mutation {
+  createSubCategory(input: CreateSubCategoryInput! @spread ): CreateSubCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\SubCategoryResolver") 
+}
+
+input CreateSubCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\CreateSubCategoryValidator") {
+  category_uuid  : String!
+  sub_cat_name   : String!
+  sub_cat_slug   : String!
+  sub_cat_status : SubCategoryStatusEnum!
+}
+
+type CreateSubCategoryResponse {
+  meta: Meta!
+}

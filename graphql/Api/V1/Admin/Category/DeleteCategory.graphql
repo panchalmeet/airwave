@@ -1,0 +1,11 @@
+extend type Mutation {
+  deleteCategory(input: deleteCategoryInput! @spread ): deleteCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\CategoryResolver@delete") 
+}
+
+input deleteCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\ViewCategoryValidator") {
+  uuid : String!
+}
+
+type deleteCategoryResponse {
+  meta : Meta!
+}

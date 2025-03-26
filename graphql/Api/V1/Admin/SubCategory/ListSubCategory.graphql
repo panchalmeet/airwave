@@ -1,0 +1,24 @@
+extend type Query {
+  listSubCategory(input: listSubCategoryInput! @spread ): listSubCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\SubCategoryListResolver")
+}
+
+input listSubCategoryInput {
+  offset : Int!
+  limit : Int
+  query: String
+  category_uuid: String
+  sort_column: String
+  sort_order: String
+}
+
+type listSubCategoryResponse {
+  meta       : Meta!
+  pagination : SubCategoryPagination
+  data       : [SubCategory]!
+}
+
+type SubCategoryPagination{
+  total_count: Int
+  offset: Int
+  limit: Int
+}

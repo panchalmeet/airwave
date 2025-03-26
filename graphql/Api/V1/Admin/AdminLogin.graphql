@@ -1,0 +1,26 @@
+extend type Mutation {
+    adminLogin(input: LoginInput! @spread ): LoginResponse! @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\AdminLoginResolver")
+    adminLogout: LogoutResponse! @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\AdminLoginResolver@logout")
+}
+
+input LoginInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\AdminLoginInputValidator") {
+  email : String!
+  password : String!
+}
+
+type LoginData{
+    token_type: String!
+    expires_in: String!
+    access_token: String!
+    refresh_token: String!
+    user: Users
+}
+
+type LoginResponse {
+    meta:Meta!
+    data:LoginData!
+}
+
+type LogoutResponse {
+    meta:Meta!
+}

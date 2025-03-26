@@ -1,0 +1,65 @@
+"A JSON Object"
+scalar JSON @scalar(class: "App\\GraphQL\\Scalars\\JSON")
+
+scalar Upload
+    @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload")
+
+type Query {
+    users: [User!]!
+        @guard(with: ["api"])
+        @paginate(type: CONNECTION, model: "App\\Models\\User")
+    user(id: ID @eq): my!
+        @guard(with: ["api"])
+        @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\UserResolver")
+}
+
+type User {
+    id: ID
+}
+
+type Meta {
+    status: Boolean!
+    message: String!
+    message_code: String!
+    status_code: Int!
+}
+
+type my {
+    id: ID
+}
+
+#import enum.graphql
+
+#import Types/Users.graphql
+#import Types/Category.graphql
+#import Types/SubCategory.graphql
+#import Types/Product.graphql
+
+#import Api/V1/Admin/AdminLogin.graphql
+
+#import Api/V1/Admin/Category/CreateCategory.graphql
+#import Api/V1/Admin/Category/EditCategory.graphql
+#import Api/V1/Admin/Category/ViewCategory.graphql
+#import Api/V1/Admin/Category/ListCategory.graphql
+#import Api/V1/Admin/Category/DeleteCategory.graphql
+
+#import Api/V1/Admin/SubCategory/CreateSubCategory.graphql
+#import Api/V1/Admin/SubCategory/ListSubCategory.graphql
+#import Api/V1/Admin/SubCategory/EditSubCategory.graphql
+#import Api/V1/Admin/SubCategory/DeleteSubCategory.graphql
+#import Api/V1/Admin/SubCategory/ViewSubCategory.graphql
+
+#import Api/V1/Admin/Product/CreateProduct.graphql
+#import Api/V1/Admin/Product/ListProduct.graphql
+#import Api/V1/Admin/Product/ViewProduct.graphql
+#import Api/V1/Admin/Product/EditProduct.graphql
+#import Api/V1/Admin/Product/DeleteProduct.graphql
+
+#import Api/V1/User/Product/UserListProduct.graphql
+#import Api/V1/User/Product/UserViewProduct.graphql
+#import Api/V1/User/Product/GetProductsData.graphql
+
+#import Api/V1/User/Category/UserListCategory.graphql
+#import Api/V1/User/Category/UserViewCategory.graphql
+
+#import Api/V1/User/SubCategory/UserListSubCategory.graphql

@@ -1,0 +1,14 @@
+extend type Mutation {
+  createCategory(input: CreateCategoryInput! @spread ): CreateCategoryResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\CategoryResolver") 
+}
+
+input CreateCategoryInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\CreateCategoryValidator") {
+  category_name   : String!
+  category_slug   : String!
+  category_image  : Upload!
+  category_status : CategoryStatusEnum!
+}
+
+type CreateCategoryResponse {
+  meta: Meta!
+}

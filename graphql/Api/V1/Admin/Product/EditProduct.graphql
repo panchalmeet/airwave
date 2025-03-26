@@ -1,0 +1,29 @@
+extend type Mutation {
+  editProduct(input: EditProductInput! @spread ): EditProductResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\ProductResolver@edit") 
+}
+
+input EditProductInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\EditProductValidator") {
+  uuid           : String!
+  cat_uuid       : String!
+  sub_cat_uuid   : String!
+  name           : String!
+  part_number    : String
+  outer_bd       : String
+  outer_td       : String
+  inner_td       : String
+  inner_bd       : String
+  no_check_valve : String
+  no_pass_valves : String
+  thread         : String
+  height         : String
+  price          : String!
+  main_img       : Upload!
+  sec_img        : Upload
+  thrd_img       : Upload
+  status         : ProductStatusEnum!
+  top_product    : TopProductEditEnum!
+}
+
+type EditProductResponse {
+  meta: Meta!
+}

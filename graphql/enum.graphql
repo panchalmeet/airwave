@@ -1,0 +1,31 @@
+enum StatusEnum {
+  ACTIVE @enum(value: 1)
+  INACTIVE @enum(value: 0)
+}
+
+enum CategoryStatusEnum {
+  ACTIVE @enum(value: "ACTIVE")
+  INACTIVE @enum(value: "INACTIVE")
+}
+
+enum SubCategoryStatusEnum {
+  ACTIVE @enum(value: "ACTIVE")
+  INACTIVE @enum(value: "INACTIVE")
+}
+
+enum ProductStatusEnum {
+  ACTIVE @enum(value: "ACTIVE")
+  INACTIVE @enum(value: "INACTIVE")
+}
+
+enum TopProductEnum {
+  YES @enum(value: 1)
+  NO @enum(value: 0)
+}
+
+enum TopProductEditEnum {
+  YES @enum(value: "YES")
+  NO @enum(value: "NO")
+}
+
+

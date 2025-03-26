@@ -1,0 +1,24 @@
+extend type Query {
+  listProduct(input: listProductInput! @spread ): listProductResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\Admin\\ProductListResolver")
+}
+
+input listProductInput {
+  offset : Int!
+  limit : Int
+  query: String
+  sort_column: String
+  sort_order: String
+  top_product: TopProductEditEnum
+}
+
+type listProductResponse {
+  meta       : Meta!
+  pagination : ProductPagination
+  data       : [Product]!
+}
+
+type ProductPagination{
+  total_count: Int
+  offset: Int
+  limit: Int
+}

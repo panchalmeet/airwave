@@ -1,0 +1,23 @@
+type Product {
+  uuid: String
+  category_uuid: String
+  category_name: String
+  sub_category_uuid: String
+  sub_category_name: String
+  name: String
+  part_number: String
+  outer_td: String
+  outer_bd: String
+  inner_td: String
+  inner_bd: String
+  no_check_valve: String
+  no_pass_valves: String
+  thread: String
+  height: String
+  main_img: String
+  sec_img: String
+  thrd_img: String
+  price: String
+  status: StatusEnum
+  top_product: TopProductEnum
+}

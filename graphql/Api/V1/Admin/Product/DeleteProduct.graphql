@@ -1,0 +1,11 @@
+extend type Mutation {
+  deleteProduct(input: deleteProductInput! @spread ): deleteProductResponse! @guard(with: ["api"]) @field(resolver: "App\\GraphQL\\Mutations\\Api\\V1\\Admin\\ProductResolver@delete") 
+}
+
+input deleteProductInput @validator(class:"App\\GraphQL\\Validators\\Api\\V1\\Admin\\ViewProductValidator") {
+  uuid : String!
+}
+
+type deleteProductResponse {
+  meta : Meta!
+}

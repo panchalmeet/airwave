@@ -1,0 +1,25 @@
+extend type Query {
+  userListProduct(input: userListProductInput! @spread ): userListProductResponse! @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\User\\UserProductListResolver")
+}
+
+input userListProductInput {
+  offset : Int!
+  limit : Int
+  query: String
+  sub_category_uuid: String
+  sort_column: String
+  sort_order: String
+  top_product: TopProductEditEnum
+}
+
+type userListProductResponse {
+  meta       : Meta!
+  pagination : UserProductPagination
+  data       : [Product]!
+}
+
+type UserProductPagination {
+  total_count: Int
+  offset: Int
+  limit: Int
+}

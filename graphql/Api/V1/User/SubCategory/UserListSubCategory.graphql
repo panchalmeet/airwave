@@ -1,0 +1,24 @@
+extend type Query {
+  userListSubCategory(input: userListSubCategoryInput! @spread ): userListSubCategoryResponse! @field(resolver: "App\\GraphQL\\Queries\\Api\\V1\\User\\UserSubCategoryListResolver")
+}
+
+input userListSubCategoryInput {
+  offset : Int!
+  limit : Int
+  query: String
+  category_uuid: String
+  sort_column: String
+  sort_order: String
+}
+
+type userListSubCategoryResponse {
+  meta       : Meta!
+  pagination : UserSubCategoryPagination
+  data       : [SubCategory]!
+}
+
+type UserSubCategoryPagination {
+  total_count: Int
+  offset: Int
+  limit: Int
+}
